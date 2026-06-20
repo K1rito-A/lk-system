@@ -12,7 +12,7 @@ body{
     background:#f2f2f2;
 }
 
-/* ===== 登录页 ===== */
+/* ===== 登录 ===== */
 #loginPage{
     display:flex;
     justify-content:center;
@@ -66,10 +66,6 @@ body{
     flex-wrap:wrap;
 }
 
-.topbar .right{
-    font-size:14px;
-}
-
 .container{
     width:90%;
     max-width:1100px;
@@ -85,10 +81,10 @@ body{
 }
 
 .tabs{
-    margin-bottom:15px;
     display:flex;
     flex-wrap:wrap;
     gap:5px;
+    margin-bottom:15px;
 }
 
 .tabs a{
@@ -137,32 +133,18 @@ th{
     color:#777;
 }
 
-/* ===== 手机优化 ===== */
+/* 手机优化 */
 @media (max-width:768px){
-
-.login-box{
-    width:90%;
-}
-
-.topbar{
-    padding:12px;
-}
-
-.tabs{
-    flex-direction:column;
-}
-
-td, th{
-    font-size:13px;
-}
-
+.login-box{width:90%;}
+.tabs{flex-direction:column;}
+td,th{font-size:13px;}
 }
 </style>
 </head>
 
 <body>
 
-<!-- 登录页面 -->
+<!-- 登录页 -->
 <div id="loginPage">
     <div class="login-box">
         <h2>Личный кабинет</h2>
@@ -178,18 +160,24 @@ td, th{
 
 <div class="topbar">
     <div>ЛК</div>
-    <div class="right">МФК &nbsp;&nbsp; Новости &nbsp;&nbsp; Личный кабинет</div>
+    <div>МФК &nbsp;&nbsp; Новости &nbsp;&nbsp; Личный кабинет</div>
 </div>
 
 <div class="container">
 
 <div class="breadcrumb" id="breadcrumb">
-    Личный кабинет
+Личный кабинет
 </div>
 
 <div class="tabs">
-    <a onclick="showPage('ya')" id="tab-ya" class="active">Я</a>
-    <a onclick="showPage('grades')" id="tab-grades">Оценки</a>
+<a onclick="showPage('ya')" id="tab-ya" class="active">Я</a>
+<a onclick="showPage('mfk')" id="tab-mfk">МФК</a>
+<a onclick="showPage('grades')" id="tab-grades">Оценки</a>
+<a onclick="showPage('portfolio')" id="tab-portfolio">Портфолио</a>
+<a onclick="showPage('orders')" id="tab-orders">Приказы</a>
+<a onclick="showPage('appeals')" id="tab-appeals">Обращения</a>
+<a onclick="showPage('polls')" id="tab-polls">Опросы</a>
+<a onclick="showPage('settings')" id="tab-settings">Настройки</a>
 </div>
 
 <div class="content">
@@ -199,9 +187,21 @@ td, th{
 <table>
 <tr><td><strong>Фамилия</strong></td><td>Ван</td></tr>
 <tr><td><strong>Имя</strong></td><td>Чжэньбо</td></tr>
+<tr><td><strong>Дата рождения</strong></td><td>2006-11-28</td></tr>
 <tr><td><strong>Год поступления</strong></td><td>2025</td></tr>
+<tr><td><strong>Тип обучения</strong></td><td>бакалавриат</td></tr>
+<tr><td><strong>Форма обучения</strong></td><td>Очная</td></tr>
 <tr><td><strong>Учебная группа</strong></td><td>95</td></tr>
+<tr><td><strong>UID</strong></td><td>004RDR</td></tr>
 </table>
+<p style="margin-top:15px;font-size:14px;color:#555;">
+Данные от: 2026-06-15.
+</p>
+</div>
+
+<!-- МФК -->
+<div id="page-mfk" class="page">
+<p>Ничего не найдено.</p>
 </div>
 
 <!-- Оценки -->
@@ -215,6 +215,43 @@ td, th{
 </table>
 </div>
 
+<!-- Портфолио -->
+<div id="page-portfolio" class="page">
+<button style="background:#5cb85c;color:white;padding:8px 14px;border:none;border-radius:4px;">
++ Добавить
+</button>
+<p style="margin-top:15px;">Ничего не найдено.</p>
+</div>
+
+<!-- Приказы -->
+<div id="page-orders" class="page">
+<table>
+<tr><th>№</th><th>Статус</th><th>Дата</th></tr>
+<tr><td>4955ac</td><td>на 1 курс</td><td>2025-09-24</td></tr>
+</table>
+</div>
+
+<!-- Обращения -->
+<div id="page-appeals" class="page">
+<p>Ничего не найдено.</p>
+</div>
+
+<!-- Опросы -->
+<div id="page-polls" class="page">
+<table>
+<tr><th>Название</th><th>Статус</th></tr>
+<tr><td colspan="2">Ничего не найдено.</td></tr>
+</table>
+</div>
+
+<!-- Настройки -->
+<div id="page-settings" class="page">
+<label>Активная зачетка</label><br><br>
+<select style="padding:6px 10px;width:300px;">
+<option>36250070</option>
+</select>
+</div>
+
 </div>
 </div>
 
@@ -226,10 +263,9 @@ td, th{
 
 <script>
 function login(){
-    const user = document.getElementById("username").value;
-    const pass = document.getElementById("password").value;
-
-    if(user === "WangZhenbo" && pass === "Antonwzb77"){
+    const user=document.getElementById("username").value;
+    const pass=document.getElementById("password").value;
+    if(user==="WangZhenbo" && pass==="Antonwzb77"){
         document.getElementById("loginPage").style.display="none";
         document.getElementById("mainSystem").style.display="block";
     }else{
@@ -240,13 +276,18 @@ function login(){
 function showPage(page){
     document.querySelectorAll('.page').forEach(p=>p.style.display='none');
     document.getElementById('page-'+page).style.display='block';
-
     document.querySelectorAll('.tabs a').forEach(t=>t.classList.remove('active'));
     document.getElementById('tab-'+page).classList.add('active');
 
     const names={
         ya:"Личный кабинет",
-        grades:"Личный кабинет / Оценки"
+        mfk:"Личный кабинет / МФК",
+        grades:"Личный кабинет / Оценки",
+        portfolio:"Личный кабинет / Портфолио",
+        orders:"Личный кабинет / Приказы",
+        appeals:"Личный кабинет / Обращения",
+        polls:"Личный кабинет / Опросы",
+        settings:"Личный кабинет / Настройки"
     };
 
     document.getElementById('breadcrumb').innerText=names[page];
