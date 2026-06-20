@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Личный кабинет</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial;
+    background:#f3f3f3;
+}
+
+/* 登录页面 */
+#loginPage{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    background:#2c2f33;
+}
+
+.login-box{
+    background:white;
+    padding:40px;
+    border-radius:8px;
+    width:300px;
+    text-align:center;
+}
+
+input{
+    width:100%;
+    padding:10px;
+    margin:10px 0;
+    border:1px solid #ccc;
+    border-radius:5px;
+}
+
+button{
+    width:100%;
+    padding:10px;
+    background:#2d6cdf;
+    border:none;
+    color:white;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#1f4fbf;
+}
+
+.error{
+    color:red;
+    font-size:14px;
+}
+
+/* 成绩页面 */
+#lkPage{
+    display:none;
+}
+
+.topbar{
+    background:#1f1f1f;
+    color:#fff;
+    padding:15px 40px;
+}
+
+.container{
+    width:75%;
+    margin:30px auto;
+    background:#fff;
+    padding:25px 30px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th,td{
+    padding:10px;
+    border-bottom:1px solid #eee;
+}
+
+.green{
+    color:green;
+}
+</style>
+</head>
+
+<body>
+
+<!-- 登录页面 -->
+<div id="loginPage">
+    <div class="login-box">
+        <h2>Личный кабинет</h2>
+        <input type="text" id="username" placeholder="Логин">
+        <input type="password" id="password" placeholder="Пароль">
+        <button onclick="login()">Войти</button>
+        <div class="error" id="error"></div>
+    </div>
+</div>
+
+<!-- 成绩页面 -->
+<div id="lkPage">
+    <div class="topbar">
+        ЛК — Студент: Ван Чжэньбо
+    </div>
+
+    <div class="container">
+        <h2>Оценки</h2>
+
+        <table>
+            <tr>
+                <th>Семестр</th>
+                <th>Предмет</th>
+                <th>Оценка</th>
+            </tr>
+
+            <tr>
+                <td>2</td>
+                <td>Физическая культура</td>
+                <td class="green">зачтено</td>
+            </tr>
+
+            <tr>
+                <td>2</td>
+                <td>Русский язык</td>
+                <td class="green">зачтено</td>
+            </tr>
+
+            <tr>
+                <td>2</td>
+                <td>Практический курс русского языка</td>
+                <td>удов.</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<script>
+function login(){
+    const user = document.getElementById("username").value;
+    const pass = document.getElementById("password").value;
+
+    if(user === "WangZhenbo" && pass === "Antonwzb77"){
+        document.getElementById("loginPage").style.display="none";
+        document.getElementById("lkPage").style.display="block";
+    } else {
+        document.getElementById("error").innerText="Неверный логин или пароль";
+    }
+}
+</script>
+
+</body>
+</html>
