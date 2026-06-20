@@ -2,16 +2,16 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<title>Личный кабинет</title>
+<title>ЛК - Оценки</title>
 
 <style>
 body{
     margin:0;
-    font-family:Arial;
+    font-family: Arial, sans-serif;
     background:#f3f3f3;
 }
 
-/* 登录页面 */
+/* 登录页 */
 #loginPage{
     display:flex;
     justify-content:center;
@@ -24,7 +24,7 @@ body{
     background:white;
     padding:40px;
     border-radius:8px;
-    width:300px;
+    width:320px;
     text-align:center;
 }
 
@@ -55,7 +55,7 @@ button:hover{
     font-size:14px;
 }
 
-/* 成绩页面 */
+/* 教务页面 */
 #lkPage{
     display:none;
 }
@@ -64,6 +64,12 @@ button:hover{
     background:#1f1f1f;
     color:#fff;
     padding:15px 40px;
+    font-size:18px;
+}
+
+.topbar .right{
+    float:right;
+    font-size:14px;
 }
 
 .container{
@@ -73,14 +79,55 @@ button:hover{
     padding:25px 30px;
 }
 
+.breadcrumb{
+    color:#888;
+    font-size:14px;
+    margin-bottom:20px;
+}
+
+.student-name{
+    margin-bottom:15px;
+    font-size:16px;
+}
+
+.tabs span{
+    margin-right:20px;
+    padding:6px 12px;
+    border-radius:4px;
+}
+
+.tabs .active{
+    background:#2d6cdf;
+    color:white;
+}
+
+.notice{
+    font-size:14px;
+    margin:15px 0 25px 0;
+}
+
 table{
     width:100%;
     border-collapse:collapse;
+    font-size:14px;
 }
 
-th,td{
-    padding:10px;
+th{
+    text-align:left;
+    border-bottom:2px solid #ddd;
+    padding:10px 8px;
+    background:#fafafa;
+}
+
+td{
+    padding:12px 8px;
     border-bottom:1px solid #eee;
+}
+
+.course small{
+    display:block;
+    color:#777;
+    margin-top:4px;
 }
 
 .green{
@@ -91,7 +138,7 @@ th,td{
 
 <body>
 
-<!-- 登录页面 -->
+<!-- 登录页 -->
 <div id="loginPage">
     <div class="login-box">
         <h2>Личный кабинет</h2>
@@ -102,41 +149,103 @@ th,td{
     </div>
 </div>
 
-<!-- 成绩页面 -->
+<!-- 成绩页 -->
 <div id="lkPage">
-    <div class="topbar">
-        ЛК — Студент: Ван Чжэньбо
+
+<div class="topbar">
+    ЛК
+    <div class="right">
+        МФК &nbsp;&nbsp; Новости &nbsp;&nbsp; Личный кабинет
+    </div>
+</div>
+
+<div class="container">
+
+    <div class="breadcrumb">
+        Личный кабинет / Оценки
     </div>
 
-    <div class="container">
-        <h2>Оценки</h2>
+    <div class="student-name">
+        Студент: <strong>Ван Чжэньбо</strong>
+    </div>
 
-        <table>
+    <div class="tabs">
+        <span>Я</span>
+        <span>МФК</span>
+        <span class="active">Оценки</span>
+        <span>Портфолио</span>
+        <span>Приказы</span>
+        <span>Обращения</span>
+        <span>Опросы</span>
+        <span>Настройки</span>
+    </div>
+
+    <div class="notice">
+        Друзья, создали неофициальный канал для оперативной коммуникации:
+        https://t.me/lkmsuchannel.
+        Также там собираем ссылки на студенческие чаты по МФК.
+    </div>
+
+    <table>
+        <thead>
             <tr>
                 <th>Семестр</th>
-                <th>Предмет</th>
+                <th>Предмет/курсовая</th>
                 <th>Оценка</th>
             </tr>
-
+        </thead>
+        <tbody>
             <tr>
                 <td>2</td>
-                <td>Физическая культура</td>
+                <td class="course">
+                    Физическая культура
+                    <small>Зачетных единиц: 2.0</small>
+                </td>
                 <td class="green">зачтено</td>
             </tr>
 
             <tr>
                 <td>2</td>
-                <td>Русский язык</td>
+                <td class="course">
+                    Корректировочный фонетический курс русского языка
+                    <small>Зачетных единиц: 2.0</small>
+                </td>
                 <td class="green">зачтено</td>
             </tr>
 
             <tr>
                 <td>2</td>
-                <td>Практический курс русского языка</td>
+                <td class="course">
+                    <span class="green">Безопасность жизнедеятельности</span>
+                    <small>Зачетных единиц: 2.0</small>
+                </td>
+                <td class="green">зачтено</td>
+            </tr>
+
+            <tr>
+                <td>2</td>
+                <td class="course">
+                    Введение в теорию межкультурной коммуникации
+                    <small>Зачетных единиц: 2.0</small>
+                </td>
+                <td class="green">зачтено</td>
+            </tr>
+
+            <tr>
+                <td>2</td>
+                <td class="course">
+                    Практический курс русского языка
+                    <small>Зачетных единиц: 9.0</small>
+                </td>
                 <td>удов.</td>
             </tr>
-        </table>
-    </div>
+        </tbody>
+    </table>
+
+    <br>
+    Данные от: 2026-06-15.
+
+</div>
 </div>
 
 <script>
